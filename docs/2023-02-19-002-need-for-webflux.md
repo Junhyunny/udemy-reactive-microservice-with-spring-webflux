@@ -17,4 +17,6 @@
     * 추후에 요청에 대한 응답을 받으면 그 시점에 필요한 로직을 수행 후 응답한다.
     * 모든 요청은 가용한 스레드와 상관없이 처리된다.
 
-<img src="../images/chapter-002-1.JPG" width="80%" />
+<p align="center"> 
+    <img src="../images/chapter-002-1.JPG" width="80%" />
+</p>
