@@ -1,0 +1,1 @@
+curl --request DELETE localhost:8092/user/$1 | jq .

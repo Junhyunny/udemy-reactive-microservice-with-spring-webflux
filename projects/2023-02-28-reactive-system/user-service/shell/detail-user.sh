@@ -1,0 +1,1 @@
+curl -X GET localhost:8092/user/$1 | jq .
