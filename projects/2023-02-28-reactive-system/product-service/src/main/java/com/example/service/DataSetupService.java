@@ -26,7 +26,7 @@ public class DataSetupService implements CommandLineRunner {
         for (int index = 0; index < 5; index++) {
             ProductDto dto = new ProductDto();
             dto.setDescription("TV-".concat(UUID.randomUUID().toString()));
-            dto.setPrice(new Random().nextInt(10000000));
+            dto.setPrice(new Random().nextInt(200));
             dtoList.add(dto);
         }
         Flux.fromIterable(dtoList)

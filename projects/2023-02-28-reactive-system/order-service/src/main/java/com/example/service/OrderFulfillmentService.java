@@ -10,6 +10,9 @@ import com.example.util.EntityDtoUtil;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
+import reactor.util.retry.Retry;
+
+import java.time.Duration;
 
 @Service
 public class OrderFulfillmentService {
@@ -43,6 +46,8 @@ public class OrderFulfillmentService {
                         requestContext.getPurchaseOrderRequestDto().getProductId()
                 )
                 .doOnNext(requestContext::setProductDto)
+//                .retry(5)
+                .retryWhen(Retry.fixedDelay(5, Duration.ofSeconds(1)))
                 .thenReturn(requestContext);
     }
 
@@ -51,6 +56,7 @@ public class OrderFulfillmentService {
                         requestContext.getTransactionRequestDto()
                 )
                 .doOnNext(requestContext::setTransactionResponseDto)
+                .retry(5)
                 .thenReturn(requestContext);
     }
 }

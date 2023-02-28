@@ -4,11 +4,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.io.Resource;
 import org.springframework.data.r2dbc.core.R2dbcEntityTemplate;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StreamUtils;
 
 import java.nio.charset.StandardCharsets;
 
-//@Service
+@Service
 public class DataSetupService implements CommandLineRunner {
 
     private final R2dbcEntityTemplate entityTemplate;
