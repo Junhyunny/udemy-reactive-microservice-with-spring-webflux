@@ -6,10 +6,12 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Service
 public class DataSetupService implements CommandLineRunner {
@@ -30,7 +32,14 @@ public class DataSetupService implements CommandLineRunner {
             dtoList.add(dto);
         }
         Flux.fromIterable(dtoList)
+                .concatWith(newProducts())
                 .flatMap(product -> productService.insertProduct(Mono.just(product)))
                 .subscribe(System.out::println);
+    }
+
+    private Flux<ProductDto> newProducts() {
+        return Flux.range(1, 1000)
+                .delayElements(Duration.ofSeconds(2))
+                .map(index -> new ProductDto("product" + index, ThreadLocalRandom.current().nextInt(10, 100)));
     }
 }
