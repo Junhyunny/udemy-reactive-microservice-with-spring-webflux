@@ -1,1 +1,0 @@
-curl --request DELETE localhost:8091/product/$1 | jq .

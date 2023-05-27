@@ -1,1 +1,0 @@
-curl -X GET "http://localhost:8091/product/price-range?min=9000&max=9900" | jq .

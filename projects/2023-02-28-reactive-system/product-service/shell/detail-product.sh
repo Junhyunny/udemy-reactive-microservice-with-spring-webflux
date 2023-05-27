@@ -1,1 +1,0 @@
-curl -X GET localhost:8091/product/$1 | jq .

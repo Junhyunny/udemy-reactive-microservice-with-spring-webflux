@@ -1,1 +1,0 @@
-curl "http://localhost:8092/user/transaction?userId=$1" | jq .
